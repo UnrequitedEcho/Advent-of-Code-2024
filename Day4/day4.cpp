@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <filesystem>
 
 using namespace std;
 
@@ -81,13 +82,12 @@ unsigned int Part2(const vector<string>& word_search){
 }
 
 int main(int argc, char *argv[]){
-    string sep = "/";
     string path(argv[0]);
-    path = path.substr(0, path.rfind(sep));
+    path = path.substr(0, path.rfind(filesystem::path::preferred_separator));
 
     vector<string> word_search;
     ifstream input;
-    input.open(path + sep + "input.txt");
+    input.open(path + filesystem::path::preferred_separator + "input.txt");
 
     string line;
     while (input >> line){

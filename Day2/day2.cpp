@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include <tuple>
+#include <filesystem>
 
 std::tuple<bool, unsigned int> is_report_safe(const std::vector<unsigned short>& report){
     std::vector<int> differences;
@@ -59,12 +60,11 @@ int part2(const std::vector<std::vector<unsigned short>>& reports){
 int main(int argc, char *argv[]){
     std::vector<std::vector<unsigned short>> reports;
 
-    std::string sep = "/";
     std::string path(argv[0]);
-    path = path.substr(0, path.rfind(sep));
+    path = path.substr(0, path.rfind(std::filesystem::path::preferred_separator));
     
     std::ifstream input;
-    input.open(path + sep + "input.txt");
+    input.open(path + std::filesystem::path::preferred_separator + "input.txt");
     std::string line;
     while (std::getline(input, line)){
         std::vector<unsigned short> report;

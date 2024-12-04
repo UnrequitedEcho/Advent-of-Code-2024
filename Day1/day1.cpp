@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <vector>
 #include <algorithm>
+#include <filesystem>
 
 int part1(std::vector<unsigned int> list1, std::vector<unsigned int> list2){
     std::sort(list1.begin(), list1.end());
@@ -32,12 +33,11 @@ int part2(const std::vector<unsigned int>& list1, const std::vector<unsigned int
 int main(int argc, char *argv[]){
     std::vector<unsigned int> list1, list2;
     
-    std::string sep = "/";
     std::string path(argv[0]);
-    path = path.substr(0, path.rfind(sep));
+    path = path.substr(0, path.rfind(std::filesystem::path::preferred_separator));
     std::cout << path << std::endl;
     std::ifstream input;
-    input.open(path + sep + "input.txt");
+    input.open(path + std::filesystem::path::preferred_separator + "input.txt");
     
     unsigned int a, b;
     while (input >> a >> b){

@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <filesystem>
 
 std::tuple<unsigned int, int> parse_and_execute_mul_instruction(std::string instruction){
     if (instruction.substr(0, 4) == "mul("){
@@ -106,13 +107,12 @@ int part2(const std::string& memory){
 
 int main(int argc, char *argv[]){
 
-    std::string sep = "/";
     std::string path(argv[0]);
-    path = path.substr(0, path.rfind(sep));
+    path = path.substr(0, path.rfind(std::filesystem::path::preferred_separator));
     
     std::string memory;
     std::ifstream input;
-    input.open(path + sep + "input.txt");
+    input.open(path + std::filesystem::path::preferred_separator + "input.txt");
     std::stringstream ss;
     ss << input.rdbuf();
     input.close();
