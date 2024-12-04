@@ -1,0 +1,4 @@
+Day*/*
+!Day*/*.py
+!Day*/*.cpp
+!Day*/*.txt
