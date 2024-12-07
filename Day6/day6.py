@@ -3,7 +3,6 @@
 # added one to the output. Turns out it was one.
 
 from pathlib import Path
-from re import error
 from tqdm.contrib.concurrent import process_map
 import copy
 
@@ -114,5 +113,6 @@ lab_map = []
 with open(Path(__file__).parent / "input.txt", "r") as input:
     for line in input:
         lab_map.append(line)
-        
+
+part1(lab_map)
 part2(lab_map)
