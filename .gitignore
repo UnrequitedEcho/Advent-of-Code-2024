@@ -2,3 +2,5 @@ Day*/*
 !Day*/*.py
 !Day*/*.cpp
 !Day*/*.txt
+!Day*/*.odin
+build.py

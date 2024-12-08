@@ -4,4 +4,4 @@ UnrequitedEcho's solutions to the advent of code 2024 competition : https://adve
 Each "day" directory contains :
 * input.txt : The input for the problem of the day
 * day*.py : My first solution, with very little optimisation and cleanup
-* day*.cpp : My optimized solution, sometimes with an added challenge if the "normal" solution was not satisfying to me
+* Optionally, a day*.xxx : A "better" or more challenging solution in an other language
