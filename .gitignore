@@ -1,6 +1,8 @@
-Day*/*
-!Day*/*.py
-!Day*/*.cpp
-!Day*/*.txt
-!Day*/*.odin
-build.py
+*
+!*/*.py
+!*/*.cpp
+!*/*.txt
+!*/*.odin
+!*/*.go
+!build.py
+!README.md
