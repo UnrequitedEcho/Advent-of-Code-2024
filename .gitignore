@@ -1,8 +1,8 @@
 *
-!*/*.py
-!*/*.cpp
-!*/*.txt
-!*/*.odin
-!*/*.go
+!*.py
+!*.cpp
+!*.txt
+!*.odin
+!*.go
 !build.py
 !README.md
