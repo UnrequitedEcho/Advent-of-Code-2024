@@ -6,20 +6,20 @@ import "core:strings"
 import "core:strconv"
 import "core:slice"
 
-part1 :: proc(array1: []int, array2: []int) -> (result: int) {
+part1 :: proc(array1: []int, array2: []int) -> (distance: int) {
 	slice.sort(array1)
 	slice.sort(array2)
 	for _, i in array1 {
-		result += abs(array2[i] - array1[i])
+		distance += abs(array2[i] - array1[i])
 	}
-	return result
+	return distance
 }
 
-part2 :: proc(array1: []int, array2: []int) -> (result: int) {
+part2 :: proc(array1: []int, array2: []int) -> (similarity: int) {
 	for v in array1 {
-		result += v * slice.count(array2, v)
+		similarity += v * slice.count(array2, v)
 	}
-	return result
+	return similarity
 }
 
 main :: proc() {

@@ -8,82 +8,61 @@ import (
 	"slices"
 )
 
-func absInt(x int) int {
-	if x < 0 {
-		return -x
+func part1(array1 []int, array2 []int)(distance int){
+	slices.Sort(array1)
+	slices.Sort(array2)
+
+	for i, _ := range array1 {
+		dist := array2[i] - array1[i]
+		// Amazingly, it seems there is no built-in abs function for ints...
+		if dist > 0 { 
+			distance += dist
+		} else {
+			distance += -dist
+		}
 	}
-	return x
+	return distance
 }
 
-func parseInput()(list1 []int, list2 []int){
-	inFile, err := os.Open("day1.txt")
-	if err != nil {
-		fmt.Println(err.Error())
-		panic(err)
-	}
-	defer inFile.Close()
-
-	scanner := bufio.NewScanner(inFile)
-	for scanner.Scan() {
-		line := scanner.Text()
-		nb1, err := strconv.Atoi(line[:5])
-		if err != nil{
-			fmt.Println("Parsing Error")
-			panic(err)
-		}
-		list1 = append(list1, nb1)
-		nb2, err := strconv.Atoi(line[len(line)-5:])
-		if err != nil {
-			fmt.Println("Parsing Error")
-			panic(err)
-		}
-		list2 = append(list2, nb2)
-	}
-	return list1, list2
-}
-
-func part1(list1 []int, list2 []int)(result int){
-	for len(list1) > 0 {
-		min1 := slices.Min(list1)
-		min2 := slices.Min(list2)
-		result += absInt(min1 - min2)
-		for i, v := range(list1) {
-			if v == min1 {
-				list1[i] = list1[len(list1)-1]
-				list1 = list1[:len(list1)-1]
-				break
-			} 
-		}
-		for i, v := range(list2) {
-			if v == min2 {
-				list2[i] = list2[len(list2)-1]
-				list2 = list2[:len(list2)-1]
-				break
-			} 
-		}
-	}
-	return result
-}
-
-func part2(list1 []int, list2 []int) (result int) {
-	for _, v := range(list1) {
+func part2(array1 []int, array2 []int) (similarity int) {
+	for _, v := range(array1) {
 		nb_occurences := 0
-		for _, w := range(list2){
+		// ... and no built-in way to count the number of a specific element in a slice
+		for _, w := range(array2){
 			if v == w {
 				nb_occurences += 1
 			}
 		}
-		result += v * nb_occurences
+		similarity += v * nb_occurences
 	}
-	return result
+	return similarity
 }
 
 func main(){
-	list1, list2 := parseInput()
-	list1copy := make([]int, len(list1))
-	list2copy := make([]int, len(list2))
-	copy(list1copy, list1)
-	copy(list2copy, list2)
-	fmt.Println(part1(list1copy,list2copy))
-	fmt.Println(part2(list1,list2))
+	inFile, err := os.Open("day1.txt")
+	if err != nil {
+		panic(err)
+	}
+	defer inFile.Close()
+	scanner := bufio.NewScanner(inFile)
+
+	array1 := make([]int, 0)
+	array2 := make([]int, 0)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+		nb, err := strconv.Atoi(line[:5])
+		if err == nil{
+			array1 = append(array1, nb)
+		}
+		
+		nb, err = strconv.Atoi(line[len(line)-5:])
+		if err == nil {
+			array2 = append(array2, nb)
+		}
+	}
+
+	
+	fmt.Println(part1(array1[:],array2[:]))
+	fmt.Println(part2(array1,array2))
 }
