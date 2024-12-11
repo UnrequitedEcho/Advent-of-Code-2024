@@ -40,7 +40,7 @@ int main(){
     input.close();
 
     cout << part1(vec1, vec2) << endl;
-    cout << part2(list1, vec2) << endl;
+    cout << part2(vec1, vec2) << endl;
     
     return 0;
 }
