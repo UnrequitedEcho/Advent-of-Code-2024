@@ -1,4 +1,6 @@
 day*/*
+build.py
+day*/build.py
 !*.py
 !*.cpp
 !*.txt
