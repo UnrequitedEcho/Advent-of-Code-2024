@@ -1,6 +1,3 @@
-from os import posix_fadvise
-
-
 claw_machines = []
 with open("input.txt") as input:
 	while True:
